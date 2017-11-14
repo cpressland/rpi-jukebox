@@ -3,7 +3,6 @@
 require 'sinatra'
 
 get "/station/:name" do |a|
-
   case a
   when 'classicrock'
     n = 'Absolute Classic Rock'
@@ -19,7 +18,6 @@ get "/station/:name" do |a|
   system 'systemctl restart jukebox.service'
   status 200
   body "Playing #{n}"
-
 end
 
 get "/control/:status" do |a|
@@ -30,5 +28,4 @@ get "/control/:status" do |a|
   system "systemctl #{a} jukebox.service"
   status 200
   body "#{a.capitalize}ing Jukebox"
-
 end
