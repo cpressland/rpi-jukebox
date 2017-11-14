@@ -1,6 +1,5 @@
 [Unit]
 Description=Tuner
-Documentation=https://github.com/adnanh/webhook
 
 [Service]
 ExecStart=/usr/bin/ruby /opt/tuner.rb
