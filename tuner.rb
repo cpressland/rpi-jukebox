@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 
-def station
-  a = ARGV[1]
+require 'sinatra'
+
+get "/station/:name" do |a|
 
   case a
   when 'classicrock'
@@ -11,27 +12,23 @@ def station
     n = 'Absolute Radio'
     u = 'http://mp3-ar-128.timlradio.co.uk/'
   else
-    abort("Not a valid option, try 'classicrock' or 'absoluteradio'")
+    halt 404
   end
 
-  File.write('/etc/jukebox.env', "STATION=#{u}\n")
-  puts "Playing #{n}"
+  File.write('/tmp/jukebox.env', "STATION=#{u}\n")
   system 'systemctl restart jukebox.service'
+  status 200
+  body "Playing #{n}"
+
 end
 
-def control
-  a = ARGV[1]
-
+get "/control/:status" do |a|
   unless ['start', 'stop', 'restart'].include?(a)
-    abort("#{a} is not valid, use start, stop or restart")
+    halt 404
   end
 
-  puts "#{a.capitalize}ing Jukebox"
   system "systemctl #{a} jukebox.service"
-end
+  status 200
+  body "#{a.capitalize}ing Jukebox"
 
-if ARGV[0] == 'station'
-  station
-elsif ARGV[0] == 'control'
-  control
 end

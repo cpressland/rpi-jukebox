@@ -14,20 +14,13 @@ Requires any systemd based Linux Distribution.
 
 ```
 cp systemd_units/* /etc/systemd/system/
-cp config/hooks.json /etc/hooks.json
 cp tuner.rb /opt/tuner.rb
-```
-
-### Install Webhook
-
-```
-curl -L 'https://github.com/adnanh/webhook/releases/download/2.6.6/webhook-linux-arm.tar.gz' -o '/tmp/webhook.tar.gz'
-tar xzvf '/tmp/webhook.tar.gz' -C '/opt' --strip 1
 ```
 
 ### Install Ruby
 
 `apt-get install ruby`
+`gem install sinatra`
 
 ## Usage
 
@@ -49,7 +42,7 @@ Station Mode has the following options:
 ### Examples
 
 Start the Jukebox
-`http://<ipaddress>:9000/hooks/jukebox?mode=control&value=start`
+`curl http://<ipaddress>:4567/control/start`
 
 Change the Station
-`http://<ipaddress>:9000/hooks/jukebox?mode=station&value=classicrock`
+`curl http://<ipaddress>:4567/station/classicrock`
