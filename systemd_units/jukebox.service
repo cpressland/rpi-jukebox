@@ -1,0 +1,14 @@
+[Unit]
+Description=OMX Player
+Requires=network.target
+
+[Service]
+Type=simple
+User=jukebox
+WorkingDirectory=/home/jukebox/
+EnvironmentFile=/etc/jukebox.env
+ExecStart=/usr/bin/omxplayer.bin ${STATION} -o local
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

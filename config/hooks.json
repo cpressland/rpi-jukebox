@@ -1,0 +1,18 @@
+[
+  {
+    "id": "jukebox",
+    "execute-command": "/opt/tuner.rb",
+    "include-command-output-in-response": true,
+    "pass-arguments-to-command":
+    [
+      {
+        "source": "url",
+        "name": "mode"
+      },
+      {
+        "source": "url",
+        "name": "value"
+      }
+    ]
+  }
+]
