@@ -16,6 +16,9 @@ get "/station/:name" do |a|
   when 'kerrang'
     n = 'Kerrang Radio'
     u = 'http://live-bauer-al.sharp-stream.com/kerrang.mp3'
+  when 'heartextra'
+    n = 'Heart Extra'
+    u = 'http://media-the.musicradio.com/Heartextra'
   else
     halt 404
   end
