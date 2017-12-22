@@ -19,6 +19,9 @@ get "/station/:name" do |a|
   when 'heartextra'
     n = 'Heart Extra'
     u = 'http://media-the.musicradio.com/Heartextra'
+  when 'radiox'
+    n = 'Radio X'
+    u = 'http://media-sov.musicradio.com/RadioXLondon'
   else
     halt 404
   end
