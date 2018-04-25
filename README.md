@@ -4,45 +4,27 @@ Basic Raspberry Pi Radio Jukebox
 
 ## TODO:
 
-* Improve all the things.
+* Dockerise everything
+* Improve README.md
+
+## Requirements
+
+* Python 3.6.5 or greater
+* Systemd Linux Distro
+* VLC Media Player
 
 ## Installation
 
-Requires any systemd based Linux Distribution.
-
-### Copy files
-
-```
-cp systemd_units/* /etc/systemd/system/
-cp tuner.rb /opt/tuner.rb
+Clone this repo into `/opt`:
+```shell
+git clone https://github.com/cpressland/rpi-jukebox.git /opt/rpi-jukebox
 ```
 
-### Install Ruby
-
-`apt-get install ruby`
-`gem install sinatra`
+Move the included Systemd unit into `/etc/systemd/system`
+```shell
+mv /opt/rpi-jukebox/systemd_units/jukebox.service /etc/systemd/system/jukebox.service
+```
 
 ## Usage
 
-### Control Mode
-
-Control Mode has the following options:
-
-* start
-* stop
-* restart
-
-### Station Mode
-
-Station Mode has the following options:
-
-* classicrock
-* absoluteradio
-
-### Examples
-
-Start the Jukebox
-`curl http://<ipaddress>:4567/control/start`
-
-Change the Station
-`curl http://<ipaddress>:4567/station/classicrock`
+Simply call `/` via `curl localhost:5000` for documentation
