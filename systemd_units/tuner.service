@@ -1,5 +1,0 @@
-[Unit]
-Description=Tuner
-
-[Service]
-ExecStart=/usr/bin/ruby /opt/tuner.rb

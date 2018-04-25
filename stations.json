@@ -1,0 +1,26 @@
+{
+  "absolute": {
+    "friendly_name": "Absolute Radio",
+    "url": "http://mp3-ac-128.timlradio.co.uk/"
+  },
+  "classicrock": {
+    "friendly_name": "Absolute Classic Rock",
+    "url": "http://mp3-ar-128.timlradio.co.uk/"
+  },
+  "kerrang": {
+    "friendly_name": "Kerrang Radio!",
+    "url": "http://live-bauer-al.sharp-stream.com/kerrang.mp3"
+  },
+  "heartextra": {
+    "friendly_name": "Heart Extra",
+    "url": "http://media-the.musicradio.com/Heartextra"
+  },
+  "radiox": {
+    "friendly_name": "Radio X",
+    "url": "http://media-sov.musicradio.com/RadioXLondon"
+  },
+  "eagle": {
+    "friendly_name": "Eagle Radio",
+    "url": "https://fg1.sad.ukrd.com/eagle-dab?ts=1524683207"
+  }
+}
