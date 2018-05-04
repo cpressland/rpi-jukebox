@@ -1,6 +1,7 @@
 import json
 import vlc
 from flask import Flask
+from flask import jsonify
 app = Flask(__name__)
 
 instance = vlc.Instance('--input-repeat=-1', '--fullscreen')
@@ -10,20 +11,9 @@ state = {'current': 'Not Playing'}
 with open('stations.json', 'r') as f:
     stations = json.load(f)
 
-@app.route('/')
-def index():
-    return """You can call the following endpoints:
-/station for a list of available stations
-/station/<station_name> to play a station
-/state for the currently playing station
-/control/stop to stop
-/control/pause to stop the station but allow resuming via /start
-/control/start to resume playback of the station
-"""
-
 @app.route('/station')
 def list_of_stations():
-    return(f'Available Stations: {", ".join(stations)} \n')
+    return jsonify(stations)
 
 @app.route('/station/<name>')
 def change_station(name):
@@ -31,12 +21,12 @@ def change_station(name):
     player.set_media(media)
     print(f'Switching to: {stations[name]["url"]}')
     player.play()
-    state['current'] = 'Playing: ' + stations[name]["friendly_name"]
-    return(f'{state["current"]}\n')
+    state['current'] = name
+    return(f'{state["current"]}')
 
 @app.route('/state')
 def health():
-    return(f'{state["current"]}\n')
+    return(f'{state["current"]}')
 
 @app.route('/control/<status>')
 def control(status):
@@ -55,3 +45,4 @@ def control(status):
             return(f'{state["current"]}\n')
     else:
         return('You can only call: stop, play or pause\n')
+
